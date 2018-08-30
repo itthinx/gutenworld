@@ -32,6 +32,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+const GUTENWORLD_VERSION = '1.0.0';
+
 /**
  * This main plugin class takes care of registering its script and its block type.
  */
@@ -69,9 +71,27 @@ class GutenWorld {
 				)
 			);
 
+			// Our editor stylesheet.
+			wp_register_style(
+				'gutenworld-editor',
+				plugins_url( 'css/editor.css', __FILE__ ),
+				array( 'wp-edit-blocks' ),
+				GUTENWORLD_VERSION
+			);
+
+			// Our front end stylesheet.
+			wp_register_style(
+				'gutenworld',
+				plugins_url( 'css/gutenworld.css', __FILE__ ),
+				array(),
+				GUTENWORLD_VERSION
+			);
+
 			// Our block type.
 			register_block_type( 'gutenworld/hi', array(
 				'editor_script' => 'gutenworld',
+				'editor_style'  => 'gutenworld-editor',
+				'style'         => 'gutenworld'
 			) );
 
 		}

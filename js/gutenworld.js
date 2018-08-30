@@ -26,28 +26,32 @@ if ( typeof wp !== 'undefined' ) {
 			title    : 'GutenWorld',
 			icon     : 'universal-access-alt',
 			category : 'layout',
-			edit     : function() {
+			// renders the block in the editor
+			edit     : function( props ) {
 				return wp.element.createElement(
 					'p',
 					{
-						style: {
+						style : {
 							backgroundColor: '#990',
 							color: '#fff',
 							padding: '20px'
-						}
+						},
+						className : props.className
 					},
 					gutenworld.edit_content
 				);
 			},
-			save     : function() {
+			// renders the block on the front end
+			save     : function( props ) {
 				return wp.element.createElement(
 					'p',
 					{
-						style: {
+						style : {
 							backgroundColor: '#909',
 							color: '#fff',
 							padding: '20px'
-						}
+						},
+						className : props.className
 					},
 					gutenworld.save_content
 				);
