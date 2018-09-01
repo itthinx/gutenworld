@@ -233,26 +233,30 @@ if ( typeof wp !== 'undefined' ) {
 									placeholder : gutenworld.content_tag_placeholder
 								}
 							)
-						),
-						// Add the editable content as RichText field.
-						// When text is entered, it will be rendered above the RichText, too,
-						// so it will look strange in the editor but it serves our purpose
-						// as an example of what you could do.
-						wp.element.createElement(
-							wp.editor.RichText,
-							{
-								format : 'string',
-								className : props.className,
-								onChange : function( value ) {
-									props.setAttributes( { content : value } );
-								},
-								value : props.attributes.content,
-								placeholder : gutenworld.shortcode_content_placeholder
-							}
 						)
 					];
-					// Example of acting when the block is selected in the editor, we'll just add a note to illustrate it.
+					// Example of acting when the block is selected in the editor:
+					// - add a note that informs about you're editing it
+					// - instead of rendering the RichText when the block is only displayed,
+					//   only show the RichText editing control when the block is selected,
+					//   that avoids showing its content twice when you are not editing the block
 					if ( props.isSelected ) {
+						// Add the editable content as RichText field.
+						fields.push(
+							wp.element.createElement(
+								wp.editor.RichText,
+								{
+									format : 'string',
+									className : props.className,
+									onChange : function( value ) {
+										props.setAttributes( { content : value } );
+									},
+									value : props.attributes.content,
+									placeholder : gutenworld.shortcode_content_placeholder
+								}
+							)
+						);
+						// And the note comes below ...
 						fields.push(
 							wp.element.createElement(
 								'div',

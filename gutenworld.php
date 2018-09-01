@@ -84,7 +84,7 @@ class GutenWorld {
 					'keyword_hello' => __( 'hello', 'gutenworld' ),
 					'keyword_example' => __( 'example', 'gutenworld' ),
 					'keyword_tutorial' => __( 'tutorial', 'gutenworld' ),
-					'shortcode_content_placeholder' => __( 'Optional content rendered below the heading', 'gutenworld' )
+					'shortcode_content_placeholder' => __( 'Input optional content rendered below the heading here &hellip;', 'gutenworld' )
 				)
 			);
 
